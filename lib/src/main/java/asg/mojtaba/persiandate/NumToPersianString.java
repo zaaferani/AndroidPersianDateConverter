@@ -49,7 +49,7 @@ public class NumToPersianString {
         if (n < 20) {
             return hundredWords[n];
         } else {
-            return joinWords(null, tensToWords(n / 10), tensToWords(n % 10));
+            return joinWords(null, tensWords[n / 10], tensToWords(n % 10));
         }
     }
 
@@ -63,8 +63,10 @@ public class NumToPersianString {
             for (int i = 0; i < words.length; i++) {
                 if (words[i] != null && !words[i].isEmpty()) {
                     stringBuilder.append(words[i]);
-                    if (i != words.length - 1)
-                        stringBuilder.append(separator);
+                    if (i + 1 < words.length) {
+                        if (words[i + 1] != null && !words[i + 1].isEmpty())
+                            stringBuilder.append(separator);
+                    }
                 }
 
             }
